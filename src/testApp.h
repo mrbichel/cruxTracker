@@ -34,5 +34,13 @@ class testApp : public ofBaseApp{
         bool				bLearnBakground;
     
         Beta * beta;
+    
+        ofParameterGroup parameters;
 
+        
+        ofVec2f pressPos;
+        float dragDist;
+        bool isDrag = false;
+    
+    
 };
