@@ -3,7 +3,10 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "Beta.h"
-#include "ofxOpenCv.h"
+#include "Tracker.h"
+
+
+
 class testApp : public ofBaseApp{
 
 	public:
@@ -24,17 +27,11 @@ class testApp : public ofBaseApp{
         ofCamera cam;
         float extrusionAmount;
         ofVboMesh mainMesh;
-        ofVideoGrabber vidGrabber;
         ofxPanel gui;
     
-        ofxCvGrayscaleImage grayBg;
-        ofxCvGrayscaleImage grayDiff;
-        ofxCvContourFinder contourFinder;
-        int 				threshold;
-        bool				bLearnBakground;
     
         Beta * beta;
-    
+        Tracker * tracker;
         ofParameterGroup parameters;
 
         
