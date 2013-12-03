@@ -39,5 +39,7 @@ class testApp : public ofBaseApp{
         float dragDist;
         bool isDrag = false;
     
+        bool debugOn = false;
+    
     
 };

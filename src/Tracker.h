@@ -34,14 +34,14 @@ public:
     
     int videowidth;
     int videoheight;
-    
+    int key;
     void setup() {
         
         grayImage.allocate(320,240);
         grayBg.allocate(320,240);
         grayDiff.allocate(320,240);
         bLearnBakground = true;
-        threshold = 30;
+        threshold = 80;
         
         //initialize the video grabber
         vidGrabber.setVerbose(true);
@@ -58,6 +58,9 @@ public:
     void update() {
         vidGrabber.update();
         bNewFrame = vidGrabber.isFrameNew();
+    
+
+        
         if (bNewFrame){
             
             colorImg.setFromPixels(vidGrabber.getPixels(), 320,240);
@@ -78,10 +81,15 @@ public:
     void debugDraw() {
         grayImage.draw(20,20);
         grayBg.draw(360,20);
-        grayDiff.draw(20,20);
+        //grayDiff.draw(20,20);
         for (int i = 0; i < contourFinder.nBlobs; i++){
             contourFinder.blobs[i].draw(20,20);
+            
+            contourFinder.blobs[i].boundingRect.getCenter().x ,
+            contourFinder.blobs[i].boundingRect.getCenter().y ;
+            
+            
+
         }
     }
-    
-};
+   };

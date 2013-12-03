@@ -33,7 +33,9 @@ void testApp::draw(){
 	string msg = "fps: " + ofToString(ofGetFrameRate(), 2);
 	ofDrawBitmapString(msg, 10, 20);
     
-    tracker->debugDraw();
+    if(debugOn) {
+     tracker->debugDraw();
+    }
     
     beta->draw();
     
@@ -53,8 +55,10 @@ void testApp::keyPressed(int key){
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
     
-
-
+    if(key == ' ') {
+        debugOn = !debugOn;
+        tracker->bLearnBakground = true;
+    }
     
 }
 
