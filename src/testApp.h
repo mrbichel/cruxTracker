@@ -4,6 +4,9 @@
 #include "ofxGui.h"
 #include "Beta.h"
 #include "ofxBullet.h"
+#include "Tracker.h"
+
+
 
 class testApp : public ofBaseApp{
 
@@ -22,24 +25,20 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        ofCamera cam;
-        float extrusionAmount;
-        ofVboMesh mainMesh;
-        ofVideoGrabber vidGrabber;
+
         ofxPanel gui;
     
-        ofxCvGrayscaleImage grayBg;
-        ofxCvGrayscaleImage grayDiff;
-        ofxCvContourFinder contourFinder;
-        int 				threshold;
-        bool				bLearnBakground;
     
         Beta * beta;
-    
+        Tracker * tracker;
         ofParameterGroup parameters;
         
         ofVec2f pressPos;
         float dragDist;
         bool isDrag = false;
+    
+
+        bool debugOn = false;
+    
     
 };
