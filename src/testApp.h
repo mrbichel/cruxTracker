@@ -3,10 +3,8 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "Beta.h"
-#include "ofxBullet.h"
 #include "Tracker.h"
-
-
+#include "ofxBullet.h"
 
 class testApp : public ofBaseApp{
 
@@ -41,4 +39,14 @@ class testApp : public ofBaseApp{
         bool debugOn = false;
     
     
+    ofxBulletWorldRigid			world;
+	ofxBulletBox				ground;
+	
+	ofxBulletSphere*			sphere;
+	ofxBulletBox*				box;
+	ofxBulletCone*				cone;
+	ofxBulletCapsule*			capsule;
+	ofxBulletCylinder*			cylinder;
+    
+    ofCamera camera;
 };

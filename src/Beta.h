@@ -43,7 +43,8 @@ public:
         for(int i=0; i<route->holds.size(); i++) {
             
             ofColor(255);
-            ofDrawSphere(route->holds[i]->pos,route->holds[i]->radius);
+            ofNoFill();
+            ofDrawSphere(route->holds[i]->pos, route->holds[i]->radius);
             
             if(i != 0) {
                 ofLine(route->holds[i]->pos, route->holds[i-1]->pos);
