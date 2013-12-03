@@ -10,14 +10,13 @@
 
 
 struct Hold {
-    ofVec2f pos;
+    ofVec3f pos;
+    float radius=4;
 };
-
 
 struct Route {
-    vector<Hold> holds;
+    vector<Hold*> holds;
 };
-
 
 // a wall is a mesh
 struct Wall {
@@ -28,9 +27,49 @@ struct Wall {
 class Beta {
 
 public:
+    
+    Route * route;
+    
     Wall wall;
     void setup() {
         
+        route = new Route();
+        
+    };
+    
+    void update() {
+        
+    };
+    
+    void draw() {
+        
+        for(int i=0; i<route->holds.size(); i++) {
+            
+            ofColor(255);
+            ofSphere(route->holds[i]->pos,route->holds[i]->radius);
+            
+            if(i != 0) {
+                ofLine(route->holds[i]->pos, route->holds[i-1]->pos);
+            }
+            
+        }
+        
+    };
+    
+    void addHold(ofVec3f pos, float radius) {
+        
+        Hold * hold;
+        hold = new Hold();
+        
+        hold->pos = pos;
+        hold->radius = radius;
+        
+        route->holds.push_back(hold);
+        
+    };
+    
+    
+    void debugDraw() {
     };
     
 };

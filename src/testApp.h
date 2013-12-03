@@ -28,5 +28,13 @@ class testApp : public ofBaseApp{
         ofxPanel gui;
     
         Beta * beta;
+    
+        ofParameterGroup parameters;
 
+        
+        ofVec2f pressPos;
+        float dragDist;
+        bool isDrag = false;
+    
+    
 };
