@@ -3,7 +3,8 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "Beta.h"
-#include "ofxOpenCv.h"
+#include "ofxBullet.h"
+
 class testApp : public ofBaseApp{
 
 	public:
@@ -36,11 +37,9 @@ class testApp : public ofBaseApp{
         Beta * beta;
     
         ofParameterGroup parameters;
-
         
         ofVec2f pressPos;
         float dragDist;
         bool isDrag = false;
-    
     
 };

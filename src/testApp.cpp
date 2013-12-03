@@ -18,7 +18,7 @@ void testApp::setup(){
 	int videowidth  = vidGrabber.getWidth();
 	int videoheight = vidGrabber.getHeight();
     
-    grayImage.allocate(320,240);
+    //grayImage.allocate(320,240);
 	grayBg.allocate(320,240);
 	grayDiff.allocate(320,240);
     
@@ -55,6 +55,9 @@ void testApp::draw(){
         ofDrawSphere(pressPos, dragDist);
     }
 	
+    
+    
+    
         
 }
 
