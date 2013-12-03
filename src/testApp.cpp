@@ -18,6 +18,13 @@ void testApp::setup(){
 	int videowidth  = vidGrabber.getWidth();
 	int videoheight = vidGrabber.getHeight();
     
+    grayImage.allocate(320,240);
+	grayBg.allocate(320,240);
+	grayDiff.allocate(320,240);
+    
+	bLearnBakground = true;
+	threshold = 30;
+
     
     beta->setup();
     
