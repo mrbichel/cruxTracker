@@ -17,7 +17,7 @@ void testApp::setup(){
     
     ofBackground( 10, 10, 10);
 	
-	camera.setPosition(ofVec3f(0, -7.f, -10.f));
+	camera.setPosition(ofVec3f(1, -7.f, -10.f));
 	camera.lookAt(ofVec3f(0, 0, 0), ofVec3f(0, -1, 0));
     
 	world.setup();

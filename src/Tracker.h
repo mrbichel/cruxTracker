@@ -82,23 +82,35 @@ public:
     };
     
     void debugDraw() {
-        grayImage.draw(20,20);
-        grayBg.draw(360,20);
-        //grayDiff.draw(360,540);
+        
+        // draw the incoming, the grayscale, the bg and the thresholded difference
+        ofSetHexColor(0xffffff);
+        colorImg.draw(20,20);
+        grayImage.draw(360,20);
+        grayBg.draw(20,280);
+        grayDiff.draw(360,280);
+        
+        // then draw the contours:
+        
+        ofFill();
+        ofSetHexColor(0x333333);
+        ofRect(360,540,320,240);
+        ofSetHexColor(0xffffff);
+        
+        // we could draw the whole contour finder
+        contourFinder.draw(360,540);
+        
+        // or, instead we can draw each blob individually from the blobs vector,
+        // this is how to get access to them:
         for (int i = 0; i < contourFinder.nBlobs; i++){
-            contourFinder.blobs[i].draw(20,20);
+            contourFinder.blobs[i].draw(360,540);
             
             // draw over the centroid if the blob is a hole
             ofSetColor(255);
             if(contourFinder.blobs[i].hole){
-                //Draw stuff
-                
-                contourFinder.blobs[i].boundingRect.getCenter().x ,
-                contourFinder.blobs[i].boundingRect.getCenter().y ;
-                
-                
-                
-                
+                ofDrawBitmapString("hole",
+                                   contourFinder.blobs[i].boundingRect.getCenter().x + 360,
+                                   contourFinder.blobs[i].boundingRect.getCenter().y + 540);
             }
         }
         
