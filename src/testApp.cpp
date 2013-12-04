@@ -54,11 +54,18 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-    
-    if(key == ' ') {
+     cout << "keyReleased " << (char)key << endl;
+    if(key == 'f') {
         debugOn = !debugOn;
+        }
+    if(key == ' ') {
         tracker->bLearnBakground = true;
+        
+
     }
+
+    
+    
     
 }
 

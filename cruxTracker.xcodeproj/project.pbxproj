@@ -218,6 +218,8 @@
 		6B907CFBB1B0FEDE76C41AA0 /* heap.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = heap.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/heap.h; sourceTree = SOURCE_ROOT; };
 		6DD5A3CBB6D5BBA1C1354F1B /* flann.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = flann.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/flann.hpp; sourceTree = SOURCE_ROOT; };
 		6FBF3765184E74F1006EDFE6 /* ofxCv-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ofxCv-master"; sourceTree = "<group>"; };
+		6FBF3A1D184EA14F006EDFE6 /* ofxMSAPhysics-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ofxMSAPhysics-master"; sourceTree = "<group>"; };
+		6FBF3A1F184EA622006EDFE6 /* ProCamToolkit-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ProCamToolkit-master"; sourceTree = "<group>"; };
 		7101CF2125B8B2BF46AA2662 /* cxcore.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cxcore.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv/cxcore.hpp; sourceTree = SOURCE_ROOT; };
 		71958293AC5292DE4B7C619D /* registration.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = registration.c; path = ../../../addons/ofxKinect/libs/libfreenect/src/registration.c; sourceTree = SOURCE_ROOT; };
 		71C98C3F44D63B39F1482A54 /* background_segm.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = background_segm.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/video/background_segm.hpp; sourceTree = SOURCE_ROOT; };
@@ -920,6 +922,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				6FBF3A1F184EA622006EDFE6 /* ProCamToolkit-master */,
+				6FBF3A1D184EA14F006EDFE6 /* ofxMSAPhysics-master */,
 				6FBF3765184E74F1006EDFE6 /* ofxCv-master */,
 				9F66160B6D853AA730F370C2 /* ofx3DModelLoader */,
 				2C8F245ACBE61E28646C17F2 /* ofxAssimpModelLoader */,

@@ -75,21 +75,33 @@ public:
         // take the abs value of the difference between background and incoming and then threshold:
         grayDiff.absDiff(grayBg, grayImage);
         grayDiff.threshold(threshold);
+        // find contours which are between the size of 20 pixels and 1/3 the w*h pixels.
+		// also, find holes is set to true so we will get interior contours as well....
+		contourFinder.findContours(grayDiff, 20, (340*240)/3, 10, true);	// find holes
     
     };
     
     void debugDraw() {
         grayImage.draw(20,20);
         grayBg.draw(360,20);
-        //grayDiff.draw(20,20);
+        //grayDiff.draw(360,540);
         for (int i = 0; i < contourFinder.nBlobs; i++){
             contourFinder.blobs[i].draw(20,20);
             
-            contourFinder.blobs[i].boundingRect.getCenter().x ,
-            contourFinder.blobs[i].boundingRect.getCenter().y ;
-            
-            
-
+            // draw over the centroid if the blob is a hole
+            ofSetColor(255);
+            if(contourFinder.blobs[i].hole){
+                //Draw stuff
+                
+                contourFinder.blobs[i].boundingRect.getCenter().x ,
+                contourFinder.blobs[i].boundingRect.getCenter().y ;
+                
+                
+                
+                
+            }
         }
-    }
+        
+}
+
    };
