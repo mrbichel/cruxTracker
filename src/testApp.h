@@ -4,8 +4,7 @@
 #include "ofxGui.h"
 #include "Beta.h"
 #include "Tracker.h"
-
-
+#include "ofxBullet.h"
 
 class testApp : public ofBaseApp{
 
@@ -24,22 +23,30 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-        ofCamera cam;
-        float extrusionAmount;
-        ofVboMesh mainMesh;
+
         ofxPanel gui;
     
     
         Beta * beta;
         Tracker * tracker;
         ofParameterGroup parameters;
-
         
         ofVec2f pressPos;
         float dragDist;
         bool isDrag = false;
     
+
         bool debugOn = false;
     
     
+    ofxBulletWorldRigid			world;
+	ofxBulletBox				ground;
+	
+	ofxBulletSphere*			sphere;
+	ofxBulletBox*				box;
+	ofxBulletCone*				cone;
+	ofxBulletCapsule*			capsule;
+	ofxBulletCylinder*			cylinder;
+    
+    ofCamera camera;
 };
