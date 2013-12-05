@@ -13,11 +13,11 @@ void testApp::setup(){
 	
     beta->setup();
     tracker->setup();
-    
+
     
     ofBackground( 10, 10, 10);
 	
-	camera.setPosition(ofVec3f(1, -7.f, -10.f));
+	camera.setPosition(ofVec3f(0, -7.f, -10.f));
 	camera.lookAt(ofVec3f(0, 0, 0), ofVec3f(0, -1, 0));
     
 	world.setup();
@@ -28,6 +28,7 @@ void testApp::setup(){
 	sphere = new ofxBulletSphere();
 	sphere->create(world.world, ofVec3f(0, 0, 0), 0.1, .25);
 	sphere->add();
+    
 	
 	box = new ofxBulletBox();
 	box->create(world.world, ofVec3f(7, 0, 0), .05, .5, .5, .5);
@@ -64,17 +65,6 @@ void testApp::draw(){
     
     ofBackground(0, 0, 0);
     
-    
-    
-	//draw framerate
-	ofSetColor(255);
-	string msg = "fps: " + ofToString(ofGetFrameRate(), 2);
-	ofDrawBitmapString(msg, 10, 20);
-    
-    if(debugOn) {
-     tracker->debugDraw();
-    }
-    
     beta->draw();
     
     if(isDrag) {
@@ -83,14 +73,9 @@ void testApp::draw(){
     }
 	
     
-    
     glEnable( GL_DEPTH_TEST );
 	camera.begin();
-	
-	ofSetLineWidth(1.f);
-	ofSetColor(255, 0, 200);
-	world.drawDebug();
-	
+    
 	ofSetColor(100, 100, 100);
 	ground.draw();
 	
@@ -111,6 +96,16 @@ void testApp::draw(){
 	
 	camera.end();
     
+    if(debugOn) {
+        tracker->debugDraw();
+        ofSetColor(255);
+        string msg = "fps: " + ofToString(ofGetFrameRate(), 2);
+        ofDrawBitmapString(msg, 10, 20);
+        ofSetLineWidth(1.f);
+        ofSetColor(255, 0, 200);
+        world.drawDebug();
+    }
+    
 
 }
 
@@ -121,18 +116,14 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-     cout << "keyReleased " << (char)key << endl;
     if(key == 'f') {
         debugOn = !debugOn;
-        }
+        cout<<"Debug mode"<<endl;
+    }
     if(key == ' ') {
         tracker->bLearnBakground = true;
-        
-
+        cout<<"New background photo"<<endl;
     }
-
-    
-    
     
 }
 
