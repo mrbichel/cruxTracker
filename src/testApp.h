@@ -30,7 +30,9 @@ class testApp : public ofBaseApp{
         Beta * beta;
         Tracker * tracker;
         ofParameterGroup parameters;
-        
+    
+        ofParameter<int> intForSlider;
+    
         ofVec2f pressPos;
         float dragDist;
         bool isDrag = false;

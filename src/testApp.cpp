@@ -10,7 +10,13 @@ void testApp::setup(){
     
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
+
 	
+    parameters.setName("GUI Parameters");
+    parameters.add(intForSlider.set("Threshold", 40, 0, 200));
+    gui.setup(parameters);
+    
+    
     beta->setup();
     tracker->setup();
 
@@ -50,12 +56,17 @@ void testApp::setup(){
 	ground.setProperties(.25, .95);
 	ground.add();
     
+    
+    
 
     
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+    
+    tracker->threshold = intForSlider;
+    
     tracker->update();
     world.update();
 }
@@ -73,29 +84,6 @@ void testApp::draw(){
     }
 	
     
-    glEnable( GL_DEPTH_TEST );
-	camera.begin();
-    
-	ofSetColor(100, 100, 100);
-	ground.draw();
-	
-	ofSetColor(225, 225, 225);
-	sphere->draw();
-	
-	ofSetColor(225, 225, 225);
-	box->draw();
-	
-	ofSetColor(225, 225, 225);
-	cylinder->draw();
-	
-	ofSetColor(225, 225, 225);
-	capsule->draw();
-	
-	ofSetColor(225, 225, 225);
-	cone->draw();
-	
-	camera.end();
-    
     if(debugOn) {
         tracker->debugDraw();
         ofSetColor(255);
@@ -106,7 +94,9 @@ void testApp::draw(){
         world.drawDebug();
     }
     
-
+    ofFill();
+    gui.draw();
+    
 }
 
 //--------------------------------------------------------------
@@ -136,14 +126,14 @@ void testApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
 
-    if(isDrag) dragDist = ofDist(x, y, pressPos.x, pressPos.y);
+    //if(isDrag) dragDist = ofDist(x, y, pressPos.x, pressPos.y);
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     
-    isDrag = true;
-    pressPos = ofVec2f(x,y);
+    //isDrag = true;
+    //pressPos = ofVec2f(x,y);
     
 }
 
@@ -151,10 +141,9 @@ void testApp::mousePressed(int x, int y, int button){
 void testApp::mouseReleased(int x, int y, int button){
 
     
-    isDrag = false;
-    cout<<"adding hold"<<endl;
-    
-    beta->addHold(pressPos, dragDist);
+    //isDrag = false;
+    //cout<<"adding hold"<<endl;
+    //beta->addHold(pressPos, dragDist);
     
 }
 
