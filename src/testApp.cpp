@@ -10,6 +10,8 @@ void testApp::setup(){
     
     beta->setup();
     tracker->setup();
+
+    mapping.setup();
     
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
@@ -95,13 +97,18 @@ void testApp::draw(){
         ofDrawSphere(pressPos, dragDist);
     }
 	
-    
+    mapping.drawInterface();
+
+    mapping.begin();
+
     if(debugOn) {
         tracker->debugDraw();
         world.drawDebug();
     
     }
-    
+
+    mapping.end();
+
     gui.draw();
     ofFill();
     
@@ -127,7 +134,13 @@ void testApp::keyReleased(int key){
         fullscreen = true;
         cout<<"Fullscreen"<<endl;
     }
-
+    if(key == OF_KEY_F10) {
+        mapping.toggleInterface();
+    }
+    if(key == OF_KEY_TAB) {
+        mapping.cycleSelection();
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -145,9 +158,11 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     
-    isDrag = true;
+    // isDrag = true;
+    
     pressPos = ofVec2f(x,y);
     
+    mapping.setSelection(pressPos);
 }
 
 //--------------------------------------------------------------
