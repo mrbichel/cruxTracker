@@ -5,6 +5,7 @@
 #include "Beta.h"
 #include "Tracker.h"
 #include "ofxBullet.h"
+#include "ViewMapping.h"
 
 class testApp : public ofBaseApp{
 
@@ -36,6 +37,8 @@ class testApp : public ofBaseApp{
         ofParameter<int> intForSlider2;
         ofParameter<bool> boolForToogle;
         ofParameter<bool> boolForButton1;
+
+        ViewMapping mapping;
     
         ofVec3f gravity;
         ofVec2f pressPos;
