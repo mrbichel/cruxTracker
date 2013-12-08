@@ -95,12 +95,9 @@ public:
         grayBg.draw(670,20);
         //grayDiff.draw(360,280);
         
-        // then draw the contours:
         
         ofSetHexColor(0xffffff);
         
-        // we could draw the whole contour finder
-        //contourFinder.draw(20,20);
         
         // or, instead we can draw each blob individually from the blobs vector,
         // this is how to get access to them:
@@ -126,11 +123,10 @@ public:
         << "threshold " << threshold << endl
         << "videoheight " << videoheight<< endl
         << "videowidth " << videowidth << endl
+        << "videowidth " << videowidth << endl
         << "num blobs found " << contourFinder.nBlobs;
         reportStr << ", fps: " << ofGetFrameRate();
         ofDrawBitmapString(reportStr.str(), 20, 20);
-
-        
         
 
         }

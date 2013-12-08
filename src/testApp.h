@@ -38,12 +38,14 @@ class testApp : public ofBaseApp{
             };
         Mode currentMode;
     
+        ofXml settings;
         ofParameterGroup parameters;
 
         ofParameter<int> intForSlider;
         ofParameter<int> intForSlider1;
         ofParameter<bool> boolForToogle;
         ofParameter<bool> boolForButton1;
+        ofParameter<int> intForSlider2;
 
         ViewMapping mapping;
     
@@ -52,7 +54,6 @@ class testApp : public ofBaseApp{
         float dragDist;
         bool isDrag = false;
         bool fullscreen = false;
-        
         bool debugOn = false;
     
     
@@ -63,7 +64,7 @@ class testApp : public ofBaseApp{
 	ofxBulletCone*				cone;
 	ofxBulletCapsule*			capsule;
 	ofxBulletCylinder*			cylinder;
-
+    
     ofCamera camera;
 
         
