@@ -2,7 +2,7 @@
 //  Tracker.h
 //  cruxTracker
 //
-//  Created by Johan Bichel Lindegaard on 03/12/2013.
+//  Created by pd on 03/12/2013.
 //
 //
 
@@ -42,7 +42,6 @@ public:
     
     int videowidth;
     int videoheight;
-    int key;
     void setup() {
         
         grayImage.allocate(320,240);
@@ -93,7 +92,7 @@ public:
         
         //colorImg.draw(20,20);
         //grayImage.draw(360,20);
-        grayBg.draw(360,20);
+        grayBg.draw(670,20);
         //grayDiff.draw(360,280);
         
         // then draw the contours:
@@ -106,18 +105,29 @@ public:
         // or, instead we can draw each blob individually from the blobs vector,
         // this is how to get access to them:
         for (int i = 0; i < contourFinder.nBlobs; i++){
-            contourFinder.blobs[i].draw(20,20);
+            contourFinder.blobs[i].draw(350,20);
             
             // draw over the centroid if the blob is a hole
             ofSetColor(255);
             if(contourFinder.blobs[i].hole){
                 ofDrawBitmapString("pop!",
-                                   contourFinder.blobs[i].boundingRect.getCenter().x + 20 ,
+                                   contourFinder.blobs[i].boundingRect.getCenter().x + 350 ,
                                    contourFinder.blobs[i].boundingRect.getCenter().y + 20);
     
                 
             }
         }
+
+        // finally, a report:
+        ofSetHexColor(0xffffff);
+        stringstream reportStr;
+        reportStr << "press space to capture bg" << endl
+        << "threshold " << threshold << endl
+        << "videoheight " << videoheight<< endl
+        << "videowidth " << videowidth << endl
+        << "num blobs found " << contourFinder.nBlobs;
+        ofDrawBitmapString(reportStr.str(), 350, 300);
+        
 
         }
 

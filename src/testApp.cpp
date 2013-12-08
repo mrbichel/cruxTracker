@@ -8,17 +8,19 @@ void testApp::setup(){
     beta = new Beta();
     tracker = new Tracker();
     
+    beta->setup();
+    tracker->setup();
+    
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 
 	
     parameters.setName("GUI Parameters");
-    parameters.add(intForSlider.set("Threshold", 40, 0, 200));
+    parameters.add(intForSlider.set("Blob threshold", 40, 0, 200));
+    parameters.add(intForSlider1.set("Gravity", 40, 0, 200));
+    parameters.add(intForSlider2.set("Particles", 40, 0, 200));
+    parameters.add(boolForToogle.set("Particles", 40, 0, 200));
     gui.setup(parameters);
-    
-    
-    beta->setup();
-    tracker->setup();
 
     
     ofBackground( 10, 10, 10);
@@ -66,7 +68,6 @@ void testApp::setup(){
 void testApp::update(){
     
     tracker->threshold = intForSlider;
-    
     tracker->update();
     world.update();
 }
@@ -87,15 +88,17 @@ void testApp::draw(){
     if(debugOn) {
         tracker->debugDraw();
         ofSetColor(255);
-        string msg = "fps: " + ofToString(ofGetFrameRate(), 2);
-        ofDrawBitmapString(msg, 10, 20);
         ofSetLineWidth(1.f);
         ofSetColor(255, 0, 200);
         world.drawDebug();
+        stringstream reportStr;
+        reportStr << ", fps: " << ofGetFrameRate();
+        ofDrawBitmapString(reportStr.str(), 20, 20);
+        
     }
-    
-    ofFill();
     gui.draw();
+    ofFill();
+    
     
 }
 

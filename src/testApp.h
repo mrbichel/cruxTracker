@@ -26,23 +26,27 @@ class testApp : public ofBaseApp{
 
         ofxPanel gui;
     
-    
         Beta * beta;
         Tracker * tracker;
+    
         ofParameterGroup parameters;
-    
+
         ofParameter<int> intForSlider;
+        ofParameter<int> intForSlider1;
+        ofParameter<int> intForSlider2;
+        ofParameter<bool> boolForToogle;
+        ofParameter<bool> boolForButton1;
     
+        ofVec3f gravity;
         ofVec2f pressPos;
         float dragDist;
         bool isDrag = false;
-    
+        
         bool debugOn = false;
     
     
     ofxBulletWorldRigid			world;
 	ofxBulletBox				ground;
-	
 	ofxBulletSphere*			sphere;
 	ofxBulletBox*				box;
 	ofxBulletCone*				cone;
