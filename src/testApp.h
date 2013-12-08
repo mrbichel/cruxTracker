@@ -42,7 +42,6 @@ class testApp : public ofBaseApp{
 
         ofParameter<int> intForSlider;
         ofParameter<int> intForSlider1;
-        ofParameter<int> intForSlider2;
         ofParameter<bool> boolForToogle;
         ofParameter<bool> boolForButton1;
 
