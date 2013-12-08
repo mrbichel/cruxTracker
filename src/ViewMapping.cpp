@@ -16,44 +16,34 @@ void ViewMapping::setup() {
         ofGetWindowHeight() - 10.0));
     updateMatrix();
 
-    interfaceActivated = false;
     currentSelection = 0;
 }
 
 //--------------------------------------------------------------
-void ViewMapping::toggleInterface() {
-    interfaceActivated = !interfaceActivated;
-}
-
-//--------------------------------------------------------------
 void ViewMapping::cycleSelection() {
-    if (interfaceActivated)
-        {
-        currentSelection = (currentSelection + 1) % 4;
-        }
+    currentSelection = (currentSelection + 1) % 4;
 }
 
 //--------------------------------------------------------------
 void ViewMapping::setSelection(const ofVec2f& x) {
-    if (interfaceActivated)
-        {
-        quad[currentSelection] = x;
-        updateMatrix();
-        }
+    quad[currentSelection] = x;
+    updateMatrix();
 }
 
 //--------------------------------------------------------------
 void ViewMapping::drawInterface() {
-    if (interfaceActivated)
-        {
-        drawLine(quad[0], quad[1]);
-        drawLine(quad[1], quad[2]);
-        drawLine(quad[2], quad[3]);
-        drawLine(quad[3], quad[0]);
+    ofBackground(255, 255, 255);
 
-        ofVec2f& current = quad[currentSelection];
-        ofCircle(current.x, current.y, 10);
-        }
+    ofSetColor(0, 0, 0, 255);
+    ofNoFill();
+
+    drawLine(quad[0], quad[1]);
+    drawLine(quad[1], quad[2]);
+    drawLine(quad[2], quad[3]);
+    drawLine(quad[3], quad[0]);
+
+    ofVec2f& current = quad[currentSelection];
+    ofCircle(current.x, current.y, 10);
 }
 
 //--------------------------------------------------------------

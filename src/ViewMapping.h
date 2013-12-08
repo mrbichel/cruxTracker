@@ -9,7 +9,6 @@ class ViewMapping {
         void setup();
         void drawInterface();
 
-        void toggleInterface();
         void cycleSelection();
         void setSelection(const ofVec2f& x);
 
@@ -25,7 +24,6 @@ class ViewMapping {
         std::vector<ofVec2f> quad;
         ofMatrix4x4 transform;
 
-        bool interfaceActivated;
         int currentSelection;
 
 };

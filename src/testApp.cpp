@@ -4,7 +4,6 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
-    
     beta = new Beta();
     tracker = new Tracker();
     
@@ -12,6 +11,8 @@ void testApp::setup(){
     tracker->setup();
 
     mapping.setup();
+
+    currentMode = ModeNormal;
     
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
@@ -23,9 +24,6 @@ void testApp::setup(){
     parameters.add(boolForToogle.set("Fullscreen",false));
     gui.setup(parameters);
 
-
-    ofBackground( 10, 10, 10);
-	
 	camera.setPosition(ofVec3f(0, -7.f, -10.f));
 	camera.lookAt(ofVec3f(0, 0, 0), ofVec3f(0, -1, 0));
     
@@ -58,61 +56,56 @@ void testApp::setup(){
 	ground.create( world.world, ofVec3f(0., 5.5, 0.), 0., 100.f, 1.f, 100.f );
 	ground.setProperties(.25, .95);
 	ground.add();
-    
-    
-    
-
-    
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-    
-    tracker->threshold = intForSlider;
-    if (boolForToogle == true){
-        ofSetFullscreen(true);
-        
-    }
-        
-    else { 
-        ofSetFullscreen(false);
+    if (currentMode == ModeNormal) {
+        tracker->threshold = intForSlider;
+        if (boolForToogle == true){
+            ofSetFullscreen(true);
+            
+        }
+            
+        else { 
+            ofSetFullscreen(false);
 
-    
-    }
+        
+        }
 
-    tracker->update();
-    world.update();
+        tracker->update();
+        world.update();
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    
-    ofBackground(0, 0, 0);
-    
-    beta->draw();
-    
-    
-    if(isDrag) {
-        ofSetColor(255,40,40,100);
-        ofDrawSphere(pressPos, dragDist);
+    if (currentMode == ModeNormal) {
+        ofBackground(0, 0, 0);
+
+        beta->draw();
+        
+        if(isDrag) {
+            ofSetColor(255,40,40,100);
+            ofDrawSphere(pressPos, dragDist);
+        }
+        
+        mapping.begin();
+
+        if(debugOn) {
+            tracker->debugDraw();
+            world.drawDebug();
+        
+        }
+
+        mapping.end();
+
+        gui.draw();
+        ofFill();
     }
-	
-    mapping.drawInterface();
-
-    mapping.begin();
-
-    if(debugOn) {
-        tracker->debugDraw();
-        world.drawDebug();
-    
+    else if (currentMode == ModeViewMapping) {
+        mapping.drawInterface();
     }
-
-    mapping.end();
-
-    gui.draw();
-    ofFill();
-    
-    
 }
 
 //--------------------------------------------------------------
@@ -122,25 +115,31 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-    if(key == 'f') {
-        debugOn = !debugOn;
-        cout<<"Debug mode"<<endl;
+    if (currentMode == ModeNormal) {
+        if(key == 'f') {
+            debugOn = !debugOn;
+            cout<<"Debug mode"<<endl;
+        }
+        if(key == ' ') {
+            tracker->bLearnBakground = true;
+            cout<<"addet new background"<<endl;
+        }
+        if(key == OF_KEY_ESC) {
+            fullscreen = true;
+            cout<<"Fullscreen"<<endl;
+        }
+        if(key == OF_KEY_F10) {
+            currentMode = ModeViewMapping;
+        }
     }
-    if(key == ' ') {
-        tracker->bLearnBakground = true;
-        cout<<"addet new background"<<endl;
+    else if (currentMode == ModeViewMapping) {
+        if(key == OF_KEY_F10) {
+            currentMode = ModeNormal;
+        }
+        if(key == OF_KEY_TAB) {
+            mapping.cycleSelection();
+        }
     }
-    if(key == OF_KEY_ESC) {
-        fullscreen = true;
-        cout<<"Fullscreen"<<endl;
-    }
-    if(key == OF_KEY_F10) {
-        mapping.toggleInterface();
-    }
-    if(key == OF_KEY_TAB) {
-        mapping.cycleSelection();
-    }
-    
 }
 
 //--------------------------------------------------------------
@@ -151,28 +150,29 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-
-    if(isDrag) dragDist = ofDist(x, y, pressPos.x, pressPos.y);
+    if (currentMode == ModeNormal) {
+        if(isDrag) dragDist = ofDist(x, y, pressPos.x, pressPos.y);
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-    
     // isDrag = true;
     
     pressPos = ofVec2f(x,y);
     
-    mapping.setSelection(pressPos);
+    if (currentMode == ModeViewMapping) {
+        mapping.setSelection(pressPos);
+    }
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-
-    
-    isDrag = false;
-    cout<<"adding hold"<<endl;
-    beta->addHold(pressPos, dragDist);
-    
+    if (currentMode == ModeNormal) {
+        isDrag = false;
+        cout<<"adding hold"<<endl;
+        beta->addHold(pressPos, dragDist);
+    }
 }
 
 //--------------------------------------------------------------

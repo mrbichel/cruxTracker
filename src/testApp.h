@@ -24,11 +24,19 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
+    private:
 
         ofxPanel gui;
     
         Beta * beta;
         Tracker * tracker;
+
+        enum Mode
+            {
+            ModeNormal,
+            ModeViewMapping
+            };
+        Mode currentMode;
     
         ofParameterGroup parameters;
 
@@ -58,4 +66,6 @@ class testApp : public ofBaseApp{
 	ofxBulletCylinder*			cylinder;
 
     ofCamera camera;
+
+        
 };
