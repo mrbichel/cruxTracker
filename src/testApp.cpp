@@ -14,15 +14,14 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 
-	
     parameters.setName("GUI Parameters");
     parameters.add(intForSlider.set("Blob threshold", 40, 0, 200));
     parameters.add(intForSlider1.set("Gravity", 40, 0, 200));
     parameters.add(intForSlider2.set("Particles", 40, 0, 200));
-    parameters.add(boolForToogle.set("Particles", 40, 0, 200));
+    parameters.add(boolForToogle.set("Fullscreen",false));
     gui.setup(parameters);
 
-    
+
     ofBackground( 10, 10, 10);
 	
 	camera.setPosition(ofVec3f(0, -7.f, -10.f));
@@ -68,6 +67,17 @@ void testApp::setup(){
 void testApp::update(){
     
     tracker->threshold = intForSlider;
+    if (boolForToogle == true){
+        ofSetFullscreen(true);
+        
+    }
+        
+    else { 
+        ofSetFullscreen(false);
+
+    
+    }
+
     tracker->update();
     world.update();
 }
@@ -79,6 +89,7 @@ void testApp::draw(){
     
     beta->draw();
     
+    
     if(isDrag) {
         ofSetColor(255,40,40,100);
         ofDrawSphere(pressPos, dragDist);
@@ -87,15 +98,10 @@ void testApp::draw(){
     
     if(debugOn) {
         tracker->debugDraw();
-        ofSetColor(255);
-        ofSetLineWidth(1.f);
-        ofSetColor(255, 0, 200);
         world.drawDebug();
-        stringstream reportStr;
-        reportStr << ", fps: " << ofGetFrameRate();
-        ofDrawBitmapString(reportStr.str(), 20, 20);
-        
+    
     }
+    
     gui.draw();
     ofFill();
     
@@ -115,9 +121,13 @@ void testApp::keyReleased(int key){
     }
     if(key == ' ') {
         tracker->bLearnBakground = true;
-        cout<<"New background photo"<<endl;
+        cout<<"addet new background"<<endl;
     }
-    
+    if(key == OF_KEY_ESC) {
+        fullscreen = true;
+        cout<<"Fullscreen"<<endl;
+    }
+
 }
 
 //--------------------------------------------------------------
@@ -129,14 +139,14 @@ void testApp::mouseMoved(int x, int y ){
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
 
-    //if(isDrag) dragDist = ofDist(x, y, pressPos.x, pressPos.y);
+    if(isDrag) dragDist = ofDist(x, y, pressPos.x, pressPos.y);
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
     
-    //isDrag = true;
-    //pressPos = ofVec2f(x,y);
+    isDrag = true;
+    pressPos = ofVec2f(x,y);
     
 }
 
@@ -144,9 +154,9 @@ void testApp::mousePressed(int x, int y, int button){
 void testApp::mouseReleased(int x, int y, int button){
 
     
-    //isDrag = false;
-    //cout<<"adding hold"<<endl;
-    //beta->addHold(pressPos, dragDist);
+    isDrag = false;
+    cout<<"adding hold"<<endl;
+    beta->addHold(pressPos, dragDist);
     
 }
 

@@ -41,6 +41,7 @@ class testApp : public ofBaseApp{
         ofVec2f pressPos;
         float dragDist;
         bool isDrag = false;
+        bool fullscreen = false;
         
         bool debugOn = false;
     
@@ -52,6 +53,6 @@ class testApp : public ofBaseApp{
 	ofxBulletCone*				cone;
 	ofxBulletCapsule*			capsule;
 	ofxBulletCylinder*			cylinder;
-    
+
     ofCamera camera;
 };

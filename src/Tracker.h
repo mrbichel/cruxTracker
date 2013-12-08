@@ -120,13 +120,17 @@ public:
 
         // finally, a report:
         ofSetHexColor(0xffffff);
+        ofSetLineWidth(1.f);
         stringstream reportStr;
         reportStr << "press space to capture bg" << endl
         << "threshold " << threshold << endl
         << "videoheight " << videoheight<< endl
         << "videowidth " << videowidth << endl
         << "num blobs found " << contourFinder.nBlobs;
-        ofDrawBitmapString(reportStr.str(), 350, 300);
+        reportStr << ", fps: " << ofGetFrameRate();
+        ofDrawBitmapString(reportStr.str(), 20, 20);
+
+        
         
 
         }
