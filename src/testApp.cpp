@@ -19,7 +19,6 @@ void testApp::setup(){
     parameters.setName("GUI Parameters");
     parameters.add(intForSlider.set("Blob threshold", 40, 0, 200));
     parameters.add(intForSlider1.set("Gravity", 40, 0, 200));
-    parameters.add(intForSlider2.set("Particles", 40, 0, 200));
     parameters.add(boolForToogle.set("Fullscreen",false));
     gui.setup(parameters);
 
@@ -77,7 +76,6 @@ void testApp::update(){
     else { 
         ofSetFullscreen(false);
 
-    
     }
 
     tracker->update();
@@ -89,8 +87,6 @@ void testApp::draw(){
     
     ofBackground(0, 0, 0);
     
-    beta->draw();
-    
     
     if(isDrag) {
         ofSetColor(255,40,40,100);
@@ -100,14 +96,16 @@ void testApp::draw(){
     mapping.drawInterface();
 
     mapping.begin();
+    
+    beta->draw();
 
+    mapping.end();
+    
     if(debugOn) {
         tracker->debugDraw();
         world.drawDebug();
-    
+        
     }
-
-    mapping.end();
 
     gui.draw();
     ofFill();
