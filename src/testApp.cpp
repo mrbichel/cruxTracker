@@ -79,13 +79,13 @@ void testApp::draw(){
     if (currentMode == ModeNormal) {
         ofBackground(0, 0, 0);
 
+        mapping.begin();
+
         if(isDrag) {
             ofSetColor(255,40,40,100);
             ofDrawSphere(pressPos, dragDist);
         }
         
-        mapping.begin();
-
         beta->draw();
         
         mapping.end();
@@ -139,30 +139,32 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
-
-    
+    ofVec2f movePos = mapping.invert(ofVec2f(x,y));
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
+    ofVec2f dragPos = mapping.invert(ofVec2f(x,y));
     if (currentMode == ModeNormal) {
-        if(isDrag) dragDist = ofDist(x, y, pressPos.x, pressPos.y);
+        if(isDrag) dragDist = ofDist(dragPos.x, dragPos.y, pressPos.x, pressPos.y);
     }
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-    // isDrag = true;
-    
-    pressPos = ofVec2f(x,y);
-    
+    pressPos = mapping.invert(ofVec2f(x,y));
+
+    isDrag = true;
+
     if (currentMode == ModeViewMapping) {
-        mapping.setSelection(pressPos);
+        mapping.setSelection(ofVec2f(x,y));
     }
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
+    ofVec2f releasePos = mapping.invert(ofVec2f(x,y));
+
     if (currentMode == ModeNormal) {
         isDrag = false;
         cout<<"adding hold"<<endl;

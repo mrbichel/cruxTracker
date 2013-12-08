@@ -1,71 +1,102 @@
 #include "ViewMapping.h"
 
 //--------------------------------------------------------------
-void ViewMapping::setup() {
-    quad.push_back(ofVec2f(
-        10.0,
-        10.0));
-    quad.push_back(ofVec2f(
-        ofGetWindowWidth() - 10.0,
-        10.0));
-    quad.push_back(ofVec2f(
-        ofGetWindowWidth() - 10.0,
-        ofGetWindowHeight() - 10.0));
-    quad.push_back(ofVec2f(
-        10.0,
-        ofGetWindowHeight() - 10.0));
-    updateMatrix();
+void ViewMapping::setup()
+    {
+    // initialize the mapping quad to the identity mapping
+    quad[0] = ofVec2f(0.0, 0.0);
+    quad[1] = ofVec2f(ofGetWindowWidth(), 0.0);
+    quad[2] = ofVec2f(ofGetWindowWidth(), ofGetWindowHeight());
+    quad[3] = ofVec2f(0.0, ofGetWindowHeight());
+    updateMatrices();
 
     currentSelection = 0;
-}
+    }
 
 //--------------------------------------------------------------
-void ViewMapping::cycleSelection() {
+void ViewMapping::cycleSelection()
+    {
     currentSelection = (currentSelection + 1) % 4;
-}
+    }
 
 //--------------------------------------------------------------
-void ViewMapping::setSelection(const ofVec2f& x) {
+void ViewMapping::setSelection(const ofVec2f& x)
+    {
     quad[currentSelection] = x;
-    updateMatrix();
-}
+    updateMatrices();
+    }
 
 //--------------------------------------------------------------
-void ViewMapping::drawInterface() {
+void ViewMapping::drawInterface()
+    {
     ofBackground(255, 255, 255);
 
     ofSetColor(0, 0, 0, 255);
     ofNoFill();
 
+    // draw mapping quad
     drawLine(quad[0], quad[1]);
     drawLine(quad[1], quad[2]);
     drawLine(quad[2], quad[3]);
     drawLine(quad[3], quad[0]);
 
+    // draw selected point
     ofVec2f& current = quad[currentSelection];
     ofCircle(current.x, current.y, 10);
-}
+    }
 
 //--------------------------------------------------------------
-void ViewMapping::begin() {
+void ViewMapping::begin()
+    {
     ofPushMatrix();
-    ofMultMatrix(transform);
-}
+    ofMultMatrix(mapping);
+    }
 
 //--------------------------------------------------------------
-void ViewMapping::end() {
+void ViewMapping::end()
+    {
     ofPopMatrix();
-}
+    }
 
 //--------------------------------------------------------------
-void ViewMapping::drawLine(const ofVec2f& a, const ofVec2f& b) {
+ofVec2f ViewMapping::invert(const ofVec2f& p)
+    {
+    // do the inverse mapping
+    ofVec4f result = inverse * ofVec4f(p.x, p.y, 0.0, 1.0);
+
+    // scale by w to go from homogenous coordinates
+    return ofVec2f(result.x/result.w, result.y/result.w);
+    }
+
+//--------------------------------------------------------------
+void ViewMapping::drawLine(const ofVec2f& a, const ofVec2f& b)
+    {
     ofLine(a.x, a.y, b.x, b.y);
-}
+    }
 
 //--------------------------------------------------------------
+void ViewMapping::updateMatrices()
+    {
+    ofVec2f winquad[4];
+    winquad[0] = ofVec2f(0.0, 0.0);
+    winquad[1] = ofVec2f(ofGetWindowWidth(), 0.0);
+    winquad[2] = ofVec2f(ofGetWindowWidth(), ofGetWindowHeight());
+    winquad[3] = ofVec2f(0.0, ofGetWindowHeight());
+
+    mapping = homography(winquad, quad);
+    inverse = ofMatrix4x4::getTransposedOf(homography(quad, winquad));
+    }
+
+//--------------------------------------------------------------
+
+// NOTE: the two functions below are adapted from code from this
+// github repository: github.com/hvfrancesco/ProjectionMapping.
+// They are licensed under GPL but are both pretty much adaptions
+// from other sources (wikipedia/hartley & zisserman). What are
+// the implications of this?
+
 void ViewMapping::gaussianElimination(float *input, int n)
     {
-    // https://github.com/hvfrancesco/ProjectionMapping/blob/master/src/quad.cpp
     // ported to c from pseudocode in
     // http://en.wikipedia.org/wiki/Gaussian_elimination
 
@@ -128,11 +159,11 @@ void ViewMapping::gaussianElimination(float *input, int n)
                 //A[i*n+j]=0;
             }
         }
-}
+    }
 
 //--------------------------------------------------------------
-void ViewMapping::updateMatrix() {
-    // https://github.com/hvfrancesco/ProjectionMapping/blob/master/src/quad.cpp
+ofMatrix4x4 ViewMapping::homography(const ofVec2f* src, const ofVec2f* dst)
+    {
     // create the equation system to be solved
     //
     // from: Multiple View Geometry in Computer Vision 2ed
@@ -151,35 +182,30 @@ void ViewMapping::updateMatrix() {
     // after ordering the terms it gives the following matrix
     // that can be solved with gaussian elimination:
 
-    ofVec2f src[4];
-    src[0] = ofVec2f(0.0, 0.0);
-    src[1] = ofVec2f(ofGetWindowWidth(), 0.0);
-    src[2] = ofVec2f(ofGetWindowWidth(), ofGetWindowHeight());
-    src[3] = ofVec2f(0.0, ofGetWindowHeight());
-
     float p[8][9]=
-    {
-        {-src[0].x, -src[0].y, -1,   0,   0,  0, src[0].x*quad[0].x, src[0].y*quad[0].x, -quad[0].x }, // h11
-        {  0,   0,  0, -src[0].x, -src[0].y, -1, src[0].x*quad[0].y, src[0].y*quad[0].y, -quad[0].y }, // h12
+        {
+        {-src[0].x, -src[0].y, -1,   0,   0,  0, src[0].x*dst[0].x, src[0].y*dst[0].x, -dst[0].x }, // h11
+        {  0,   0,  0, -src[0].x, -src[0].y, -1, src[0].x*dst[0].y, src[0].y*dst[0].y, -dst[0].y }, // h12
 
-        {-src[1].x, -src[1].y, -1,   0,   0,  0, src[1].x*quad[1].x, src[1].y*quad[1].x, -quad[1].x }, // h13
-        {  0,   0,  0, -src[1].x, -src[1].y, -1, src[1].x*quad[1].y, src[1].y*quad[1].y, -quad[1].y }, // h21
+        {-src[1].x, -src[1].y, -1,   0,   0,  0, src[1].x*dst[1].x, src[1].y*dst[1].x, -dst[1].x }, // h13
+        {  0,   0,  0, -src[1].x, -src[1].y, -1, src[1].x*dst[1].y, src[1].y*dst[1].y, -dst[1].y }, // h21
 
-        {-src[2].x, -src[2].y, -1,   0,   0,  0, src[2].x*quad[2].x, src[2].y*quad[2].x, -quad[2].x }, // h22
-        {  0,   0,  0, -src[2].x, -src[2].y, -1, src[2].x*quad[2].y, src[2].y*quad[2].y, -quad[2].y }, // h23
+        {-src[2].x, -src[2].y, -1,   0,   0,  0, src[2].x*dst[2].x, src[2].y*dst[2].x, -dst[2].x }, // h22
+        {  0,   0,  0, -src[2].x, -src[2].y, -1, src[2].x*dst[2].y, src[2].y*dst[2].y, -dst[2].y }, // h23
 
-        {-src[3].x, -src[3].y, -1,   0,   0,  0, src[3].x*quad[3].x, src[3].y*quad[3].x, -quad[3].x }, // h31
-        {  0,   0,  0, -src[3].x, -src[3].y, -1, src[3].x*quad[3].y, src[3].y*quad[3].y, -quad[3].y }, // h32
-    };
+        {-src[3].x, -src[3].y, -1,   0,   0,  0, src[3].x*dst[3].x, src[3].y*dst[3].x, -dst[3].x }, // h31
+        {  0,   0,  0, -src[3].x, -src[3].y, -1, src[3].x*dst[3].y, src[3].y*dst[3].y, -dst[3].y }, // h32
+        };
 
     gaussianElimination(&p[0][0],9);
 
     // gaussian elimination gives the results of the equation system
     // in the last column of the original matrix.
     // opengl needs the transposed 4x4 matrix:
-    transform.set(
+    return ofMatrix4x4(
         p[0][8], p[3][8], 0, p[6][8],
         p[1][8], p[4][8], 0, p[7][8],
         0,       0,       0, 0,
         p[2][8], p[5][8], 0, 1);
-}
+    }
+

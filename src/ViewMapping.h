@@ -1,30 +1,45 @@
 #pragma once
 
-#include <vector>
-
 #include "ofMain.h"
 
-class ViewMapping {
-    public:
-        void setup();
-        void drawInterface();
+class ViewMapping
+    {
+public:
+    // Initialize the object
+    void setup();
 
-        void cycleSelection();
-        void setSelection(const ofVec2f& x);
+    // Draw the mapping selection
+    void drawInterface();
 
-        void begin();
-        void end();
+    // Select the next point of the mapping quad
+    void cycleSelection();
 
-    private:
-        void drawLine(const ofVec2f& a, const ofVec2f& b);
+    // Set the selected mapping quad to the given position (in window
+    // coordinates)
+    void setSelection(const ofVec2f& x);
 
-        void gaussianElimination(float *input, int n);
-        void updateMatrix();
+    // Add a mapping matrix to the openframeworks matrix stack.
+    void begin();
 
-        std::vector<ofVec2f> quad;
-        ofMatrix4x4 transform;
+    // Restore the openframeworks matrix stack to the state before calling
+    // begin.
+    void end();
 
-        int currentSelection;
+    // Transform a point from window coordinates to render plane
+    // coordinates. Use for mouse coordinates for example
+    ofVec2f invert(const ofVec2f& p);
 
-};
+private:
+    void drawLine(const ofVec2f& a, const ofVec2f& b);
+
+    void updateMatrices();
+    void gaussianElimination(float *input, int n);
+    ofMatrix4x4 homography(const ofVec2f* src, const ofVec2f* dst);
+
+    ofVec2f quad[4];
+    ofMatrix4x4 mapping;
+    ofMatrix4x4 inverse;
+
+    int currentSelection;
+    };
 
