@@ -87,16 +87,23 @@ public:
 		contourFinder.findContours(grayDiff, 20, (340*240)/3, 10, true);	// find holes
     
     };
-    
+    void draw() {
+        if (bNewFrame){
+
+        float width     = ofGetWidth();
+        float height    = ofGetHeight();
+
+        colorImg.draw(width, height);
+        }
+    };
     void debugDraw() {
-        
+        ofSetColor(255);
         //colorImg.draw(20,20);
         //grayImage.draw(360,20);
         grayBg.draw(670,20);
         //grayDiff.draw(360,280);
         
         
-        ofSetHexColor(0xffffff);
         
         
         // or, instead we can draw each blob individually from the blobs vector,
@@ -120,13 +127,14 @@ public:
         ofSetLineWidth(1.f);
         stringstream reportStr;
         reportStr << "press space to capture bg" << endl
+        << "press F10 to enter mapping mode" << endl
+        << "press F11 to enter Fullscreen" << endl
         << "threshold " << threshold << endl
         << "videoheight " << videoheight<< endl
         << "videowidth " << videowidth << endl
         << "videowidth " << videowidth << endl
         << "num blobs found " << contourFinder.nBlobs;
-        reportStr << ", fps: " << ofGetFrameRate();
-        ofDrawBitmapString(reportStr.str(), 20, 20);
+        ofDrawBitmapString(reportStr.str(), 160, 20);
         
 
         }

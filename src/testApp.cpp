@@ -10,23 +10,25 @@ void testApp::setup(){
     
     beta->setup();
     tracker->setup();
-
+    meshplane.setup();
     mapping.setup();
-
+    
     currentMode = ModeNormal;
     
-	ofSetVerticalSync(true);
+	ofSetVerticalSync(false);
 	ofSetFrameRate(60);
+    
     
     parameters.setName("settings");
     parameters.add(intForSlider.set("Blob threshold", 40, 0, 200));
-    parameters.add(intForSlider1.set("Gravity", 40, 0, 200));
+    parameters.add(intForSlider1.set("Gravity", -9.8, -20, 20));
     parameters.add(boolForToogle.set("Fullscreen",false));
+    parameters.add(boolForToogle1.set("Debug",false));
     parameters.add(intForSlider2.set("Fov", 60, 20, 120));
     gui.setup(parameters);
     gui.loadFromFile("settings.xml");
 
-	camera.setPosition(ofVec3f(0, -2.f, -5.f));
+	camera.setPosition(ofVec3f(0, -7.f, -10.f));
 	camera.lookAt(ofVec3f(0, 0, 0), ofVec3f(0, -1, 0));
     
 	world.setup();
@@ -38,7 +40,6 @@ void testApp::setup(){
 	sphere = new ofxBulletSphere();
 	sphere->create(world.world, ofVec3f(0, 0, 0), 0.1, .25);
 	sphere->add();
-    
 	
 	box = new ofxBulletBox();
 	box->create(world.world, ofVec3f(7, 0, 0), .05, .5, .5, .5);
@@ -56,17 +57,18 @@ void testApp::setup(){
 	cylinder->create(world.world, ofVec3f(0, -2.4, 0), .8, .9, 1.8);
 	cylinder->add();
     
-	
 	ground.create( world.world, ofVec3f(0., 5.5, 0.), 0., 100.f, 1.f, 100.f );
 	ground.setProperties(.25, .95);
 	ground.add();
+    
+    
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
     
     tracker->threshold = intForSlider;
-
+    debugOn = boolForToogle1;
     
     if (currentMode == ModeNormal) {
         if (boolForToogle == true){
@@ -76,7 +78,8 @@ void testApp::update(){
         else { 
             ofSetFullscreen(false);
         }
-
+        
+        meshplane.update();
         tracker->update();
         world.update();
     }
@@ -87,28 +90,57 @@ void testApp::draw(){
     if (currentMode == ModeNormal) {
         ofBackground(0, 0, 0);
 
-        mapping.begin();
-
         if(isDrag) {
             ofSetColor(255,40,40,100);
             ofDrawSphere(pressPos, dragDist);
         }
-
+        
         mapping.begin();
-
-        world.drawDebug();
+        
+        meshplane.draw();
+        
+        camera.begin();
+        
+        //glEnable( GL_DEPTH_TEST );
+        
+        ofSetColor(225, 225, 225);
+        sphere->draw();
+        
+        ofSetColor(225, 225, 225);
+        box->draw();
+        
+        ofSetColor(225, 225, 225);
+        cylinder->draw();
+        
+        ofSetColor(225, 225, 225);
+        capsule->draw();
+        
+        ofSetColor(225, 225, 225);
+        cone->draw();
+        
+        camera.end();
+        
+        //glDisable( GL_DEPTH_TEST );
 
         beta->draw();
-
+        
+        
         mapping.end();
 
         if(debugOn) {
             tracker->debugDraw();
             world.drawDebug();
         }
-
         gui.draw();
+        
         ofFill();
+        
+        // Draw fps;
+        ofSetHexColor(0xffffff);
+        ofSetLineWidth(1.f);
+        stringstream reportStr;
+        reportStr << "fps:" << ofGetFrameRate();
+        ofDrawBitmapString(reportStr.str(), 20, 20);
     }
     else if (currentMode == ModeViewMapping) {
         mapping.drawInterface();
@@ -131,7 +163,7 @@ void testApp::keyReleased(int key){
             tracker->bLearnBakground = true;
             cout<<"addet new background"<<endl;
         }
-        if(key == OF_KEY_ESC) {
+        if(key == OF_KEY_F11) {
             fullscreen = true;
             cout<<"Fullscreen"<<endl;
         }

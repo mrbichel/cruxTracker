@@ -4,6 +4,7 @@
 #include "ofxGui.h"
 #include "Beta.h"
 #include "Tracker.h"
+#include "Meshplane.h"
 #include "ofxBullet.h"
 #include "ViewMapping.h"
 
@@ -27,9 +28,11 @@ class testApp : public ofBaseApp{
     private:
 
         ofxPanel gui;
+        ofCamera camera;
     
         Beta * beta;
         Tracker * tracker;
+    
 
         enum Mode
             {
@@ -44,10 +47,12 @@ class testApp : public ofBaseApp{
         ofParameter<int> intForSlider;
         ofParameter<int> intForSlider1;
         ofParameter<bool> boolForToogle;
+        ofParameter<bool> boolForToogle1;
         ofParameter<bool> boolForButton1;
         ofParameter<int> intForSlider2;
 
         ViewMapping mapping;
+        Meshplane meshplane;
     
         ofVec3f gravity;
         ofVec2f pressPos;
@@ -65,7 +70,7 @@ class testApp : public ofBaseApp{
 	ofxBulletCapsule*			capsule;
 	ofxBulletCylinder*			cylinder;
     
-    ofCamera camera;
-
-        
+    ofLight pointLight;
+    ofColor lightColor;
+   
 };
