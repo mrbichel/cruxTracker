@@ -19,6 +19,8 @@
 		042C1196184E9CAA0084225F /* ofxBulletCylinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 042C10AF184E9CA90084225F /* ofxBulletCylinder.cpp */; };
 		042C1197184E9CAA0084225F /* ofxBulletSphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 042C10B1184E9CA90084225F /* ofxBulletSphere.cpp */; };
 		042C1198184E9CAA0084225F /* ofxBulletStaticPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 042C10B3184E9CA90084225F /* ofxBulletStaticPlane.cpp */; };
+		049161DC1857B7FC00A1ACD5 /* MSAObjCPointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049161D81857B7FC00A1ACD5 /* MSAObjCPointer.cpp */; };
+		049162051857B81F00A1ACD5 /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 049162021857B81F00A1ACD5 /* MSACoreGL.cpp */; };
 		0546D1A38E13BD319CC9755B /* OscReceivedElements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9BF3AA0D4FAA89D0F8A0E545 /* OscReceivedElements.cpp */; };
 		125506CD3E5F428AAFE5CC65 /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F399B91E98DC31CDA6DDACB4 /* ofxTCPManager.cpp */; };
 		169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */; };
@@ -174,6 +176,38 @@
 		042C10B2184E9CA90084225F /* ofxBulletSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBulletSphere.h; sourceTree = "<group>"; };
 		042C10B3184E9CA90084225F /* ofxBulletStaticPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBulletStaticPlane.cpp; sourceTree = "<group>"; };
 		042C10B4184E9CA90084225F /* ofxBulletStaticPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBulletStaticPlane.h; sourceTree = "<group>"; };
+		049161CA1857B7FC00A1ACD5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		049161D51857B7FC00A1ACD5 /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
+		049161D61857B7FC00A1ACD5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		049161D81857B7FC00A1ACD5 /* MSAObjCPointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSAObjCPointer.cpp; sourceTree = "<group>"; };
+		049161D91857B7FC00A1ACD5 /* MSAObjCPointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAObjCPointer.h; sourceTree = "<group>"; };
+		049161DE1857B81500A1ACD5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		049161E61857B81500A1ACD5 /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
+		049161E71857B81500A1ACD5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		049161E91857B81500A1ACD5 /* MSAPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysics.h; sourceTree = "<group>"; };
+		049161EA1857B81500A1ACD5 /* MSAPhysics2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysics2D.h; sourceTree = "<group>"; };
+		049161EB1857B81500A1ACD5 /* MSAPhysics3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysics3D.h; sourceTree = "<group>"; };
+		049161EC1857B81500A1ACD5 /* MSAPhysicsAttraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsAttraction.h; sourceTree = "<group>"; };
+		049161ED1857B81500A1ACD5 /* MSAPhysicsCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsCallbacks.h; sourceTree = "<group>"; };
+		049161EE1857B81500A1ACD5 /* MSAPhysicsConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsConstraint.h; sourceTree = "<group>"; };
+		049161EF1857B81500A1ACD5 /* MSAPhysicsDataRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsDataRecorder.h; sourceTree = "<group>"; };
+		049161F01857B81500A1ACD5 /* MSAPhysicsParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParams.h; sourceTree = "<group>"; };
+		049161F11857B81500A1ACD5 /* MSAPhysicsParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParticle.h; sourceTree = "<group>"; };
+		049161F21857B81500A1ACD5 /* MSAPhysicsParticleDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParticleDrawer.h; sourceTree = "<group>"; };
+		049161F31857B81500A1ACD5 /* MSAPhysicsParticleUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParticleUpdater.h; sourceTree = "<group>"; };
+		049161F41857B81500A1ACD5 /* MSAPhysicsSector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsSector.h; sourceTree = "<group>"; };
+		049161F51857B81500A1ACD5 /* MSAPhysicsSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsSpring.h; sourceTree = "<group>"; };
+		049161F61857B81500A1ACD5 /* MSAPhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsWorld.h; sourceTree = "<group>"; };
+		049161FA1857B81F00A1ACD5 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		049161FB1857B81F00A1ACD5 /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
+		049161FC1857B81F00A1ACD5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		049161FE1857B81F00A1ACD5 /* MSACore-Cinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
+		049161FF1857B81F00A1ACD5 /* MSACore-OF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSACore-OF.h"; sourceTree = "<group>"; };
+		049162001857B81F00A1ACD5 /* MSACore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACore.h; sourceTree = "<group>"; };
+		049162011857B81F00A1ACD5 /* MSACoreCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreCommon.h; sourceTree = "<group>"; };
+		049162021857B81F00A1ACD5 /* MSACoreGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MSACoreGL.cpp; sourceTree = "<group>"; };
+		049162031857B81F00A1ACD5 /* MSACoreGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreGL.h; sourceTree = "<group>"; };
+		049162041857B81F00A1ACD5 /* MSACoreMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSACoreMath.h; sourceTree = "<group>"; };
 		057122A817D12571F8C0C7A4 /* ofxCvGrayscaleImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCvGrayscaleImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvGrayscaleImage.cpp; sourceTree = SOURCE_ROOT; };
 		077F7AC989DAB289A1EC643F /* svgtiny_list.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = svgtiny_list.cpp; path = ../../../addons/ofxSvg/libs/svgTiny/src/svgtiny_list.cpp; sourceTree = SOURCE_ROOT; };
 		087522EA37A32B8D902CAB64 /* core_c.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core_c.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/core_c.h; sourceTree = SOURCE_ROOT; };
@@ -267,23 +301,7 @@
 		6DD5A3CBB6D5BBA1C1354F1B /* flann.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = flann.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/flann.hpp; sourceTree = SOURCE_ROOT; };
 		6FA1B4871855E22F00321BE8 /* Meshplane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Meshplane.h; sourceTree = "<group>"; };
 		6FA1B4881855EA5800321BE8 /* Meshplane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Meshplane.cpp; sourceTree = "<group>"; };
-		6FD89D841857B55400DDEA02 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		6FD89D8C1857B55400DDEA02 /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.md; sourceTree = "<group>"; };
-		6FD89D8D1857B55400DDEA02 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		6FD89D8F1857B55400DDEA02 /* MSAPhysics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysics.h; sourceTree = "<group>"; };
-		6FD89D901857B55400DDEA02 /* MSAPhysics2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysics2D.h; sourceTree = "<group>"; };
-		6FD89D911857B55400DDEA02 /* MSAPhysics3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysics3D.h; sourceTree = "<group>"; };
-		6FD89D921857B55400DDEA02 /* MSAPhysicsAttraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsAttraction.h; sourceTree = "<group>"; };
-		6FD89D931857B55400DDEA02 /* MSAPhysicsCallbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsCallbacks.h; sourceTree = "<group>"; };
-		6FD89D941857B55400DDEA02 /* MSAPhysicsConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsConstraint.h; sourceTree = "<group>"; };
-		6FD89D951857B55400DDEA02 /* MSAPhysicsDataRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsDataRecorder.h; sourceTree = "<group>"; };
-		6FD89D961857B55400DDEA02 /* MSAPhysicsParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParams.h; sourceTree = "<group>"; };
-		6FD89D971857B55400DDEA02 /* MSAPhysicsParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParticle.h; sourceTree = "<group>"; };
-		6FD89D981857B55400DDEA02 /* MSAPhysicsParticleDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParticleDrawer.h; sourceTree = "<group>"; };
-		6FD89D991857B55400DDEA02 /* MSAPhysicsParticleUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsParticleUpdater.h; sourceTree = "<group>"; };
-		6FD89D9A1857B55400DDEA02 /* MSAPhysicsSector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsSector.h; sourceTree = "<group>"; };
-		6FD89D9B1857B55400DDEA02 /* MSAPhysicsSpring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsSpring.h; sourceTree = "<group>"; };
-		6FD89D9C1857B55400DDEA02 /* MSAPhysicsWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAPhysicsWorld.h; sourceTree = "<group>"; };
+		6FBF3765184E74F1006EDFE6 /* ofxCv-master */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ofxCv-master"; sourceTree = "<group>"; };
 		7101CF2125B8B2BF46AA2662 /* cxcore.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cxcore.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv/cxcore.hpp; sourceTree = SOURCE_ROOT; };
 		71958293AC5292DE4B7C619D /* registration.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 30; name = registration.c; path = ../../../addons/ofxKinect/libs/libfreenect/src/registration.c; sourceTree = SOURCE_ROOT; };
 		71C98C3F44D63B39F1482A54 /* background_segm.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = background_segm.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/video/background_segm.hpp; sourceTree = SOURCE_ROOT; };
@@ -578,6 +596,86 @@
 				C4FB85020773DA0F09B8B6CE /* ts_gtest.h */,
 			);
 			name = ts;
+			sourceTree = "<group>";
+		};
+		049161C91857B7FC00A1ACD5 /* ofxMSAObjCPointer */ = {
+			isa = PBXGroup;
+			children = (
+				049161CA1857B7FC00A1ACD5 /* .gitignore */,
+				049161D51857B7FC00A1ACD5 /* license.md */,
+				049161D61857B7FC00A1ACD5 /* README.md */,
+				049161D71857B7FC00A1ACD5 /* src */,
+			);
+			name = ofxMSAObjCPointer;
+			path = ../../../addons/ofxMSAObjCPointer;
+			sourceTree = "<group>";
+		};
+		049161D71857B7FC00A1ACD5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				049161D81857B7FC00A1ACD5 /* MSAObjCPointer.cpp */,
+				049161D91857B7FC00A1ACD5 /* MSAObjCPointer.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		049161DD1857B81500A1ACD5 /* ofxMSAPhysics */ = {
+			isa = PBXGroup;
+			children = (
+				049161DE1857B81500A1ACD5 /* .gitignore */,
+				049161E61857B81500A1ACD5 /* license.md */,
+				049161E71857B81500A1ACD5 /* README.md */,
+				049161E81857B81500A1ACD5 /* src */,
+			);
+			name = ofxMSAPhysics;
+			path = ../../../addons/ofxMSAPhysics;
+			sourceTree = "<group>";
+		};
+		049161E81857B81500A1ACD5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				049161E91857B81500A1ACD5 /* MSAPhysics.h */,
+				049161EA1857B81500A1ACD5 /* MSAPhysics2D.h */,
+				049161EB1857B81500A1ACD5 /* MSAPhysics3D.h */,
+				049161EC1857B81500A1ACD5 /* MSAPhysicsAttraction.h */,
+				049161ED1857B81500A1ACD5 /* MSAPhysicsCallbacks.h */,
+				049161EE1857B81500A1ACD5 /* MSAPhysicsConstraint.h */,
+				049161EF1857B81500A1ACD5 /* MSAPhysicsDataRecorder.h */,
+				049161F01857B81500A1ACD5 /* MSAPhysicsParams.h */,
+				049161F11857B81500A1ACD5 /* MSAPhysicsParticle.h */,
+				049161F21857B81500A1ACD5 /* MSAPhysicsParticleDrawer.h */,
+				049161F31857B81500A1ACD5 /* MSAPhysicsParticleUpdater.h */,
+				049161F41857B81500A1ACD5 /* MSAPhysicsSector.h */,
+				049161F51857B81500A1ACD5 /* MSAPhysicsSpring.h */,
+				049161F61857B81500A1ACD5 /* MSAPhysicsWorld.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		049161F91857B81F00A1ACD5 /* ofxMSACore */ = {
+			isa = PBXGroup;
+			children = (
+				049161FA1857B81F00A1ACD5 /* .gitignore */,
+				049161FB1857B81F00A1ACD5 /* license.md */,
+				049161FC1857B81F00A1ACD5 /* README.md */,
+				049161FD1857B81F00A1ACD5 /* src */,
+			);
+			name = ofxMSACore;
+			path = ../../../addons/ofxMSACore;
+			sourceTree = "<group>";
+		};
+		049161FD1857B81F00A1ACD5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				049161FE1857B81F00A1ACD5 /* MSACore-Cinder.h */,
+				049161FF1857B81F00A1ACD5 /* MSACore-OF.h */,
+				049162001857B81F00A1ACD5 /* MSACore.h */,
+				049162011857B81F00A1ACD5 /* MSACoreCommon.h */,
+				049162021857B81F00A1ACD5 /* MSACoreGL.cpp */,
+				049162031857B81F00A1ACD5 /* MSACoreGL.h */,
+				049162041857B81F00A1ACD5 /* MSACoreMath.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		0F07FE174552DEF007BF5AD5 /* opencv2 */ = {
@@ -896,39 +994,6 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		6FD89D831857B55400DDEA02 /* ofxMSAPhysics */ = {
-			isa = PBXGroup;
-			children = (
-				6FD89D841857B55400DDEA02 /* .gitignore */,
-				6FD89D8C1857B55400DDEA02 /* license.md */,
-				6FD89D8D1857B55400DDEA02 /* README.md */,
-				6FD89D8E1857B55400DDEA02 /* src */,
-			);
-			name = ofxMSAPhysics;
-			path = ../../../addons/ofxMSAPhysics;
-			sourceTree = "<group>";
-		};
-		6FD89D8E1857B55400DDEA02 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				6FD89D8F1857B55400DDEA02 /* MSAPhysics.h */,
-				6FD89D901857B55400DDEA02 /* MSAPhysics2D.h */,
-				6FD89D911857B55400DDEA02 /* MSAPhysics3D.h */,
-				6FD89D921857B55400DDEA02 /* MSAPhysicsAttraction.h */,
-				6FD89D931857B55400DDEA02 /* MSAPhysicsCallbacks.h */,
-				6FD89D941857B55400DDEA02 /* MSAPhysicsConstraint.h */,
-				6FD89D951857B55400DDEA02 /* MSAPhysicsDataRecorder.h */,
-				6FD89D961857B55400DDEA02 /* MSAPhysicsParams.h */,
-				6FD89D971857B55400DDEA02 /* MSAPhysicsParticle.h */,
-				6FD89D981857B55400DDEA02 /* MSAPhysicsParticleDrawer.h */,
-				6FD89D991857B55400DDEA02 /* MSAPhysicsParticleUpdater.h */,
-				6FD89D9A1857B55400DDEA02 /* MSAPhysicsSector.h */,
-				6FD89D9B1857B55400DDEA02 /* MSAPhysicsSpring.h */,
-				6FD89D9C1857B55400DDEA02 /* MSAPhysicsWorld.h */,
-			);
-			path = src;
-			sourceTree = "<group>";
-		};
 		737B033AA777B67BA4F8F4D2 /* opencv */ = {
 			isa = PBXGroup;
 			children = (
@@ -1103,8 +1168,11 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				6FD89D831857B55400DDEA02 /* ofxMSAPhysics */,
+				049161F91857B81F00A1ACD5 /* ofxMSACore */,
+				049161DD1857B81500A1ACD5 /* ofxMSAPhysics */,
+				049161C91857B7FC00A1ACD5 /* ofxMSAObjCPointer */,
 				042C0DE6184E9CA70084225F /* ofxBullet */,
+				6FBF3765184E74F1006EDFE6 /* ofxCv-master */,
 				9F66160B6D853AA730F370C2 /* ofx3DModelLoader */,
 				2C8F245ACBE61E28646C17F2 /* ofxAssimpModelLoader */,
 				480A780D8D0308AE4A368801 /* ofxGui */,
@@ -1576,6 +1644,7 @@
 				255A7B680DC81E543C875794 /* usb_libusb10.c in Sources */,
 				960D20B191346612D5C05A6A /* ofxTCPClient.cpp in Sources */,
 				042C1196184E9CAA0084225F /* ofxBulletCylinder.cpp in Sources */,
+				049161DC1857B7FC00A1ACD5 /* MSAObjCPointer.cpp in Sources */,
 				125506CD3E5F428AAFE5CC65 /* ofxTCPManager.cpp in Sources */,
 				66CA411C5A9664E27326BF36 /* ofxTCPServer.cpp in Sources */,
 				E2564CF7DDB3713772BB682E /* ofxUDPManager.cpp in Sources */,
@@ -1613,6 +1682,7 @@
 				042C1190184E9CAA0084225F /* ofxBulletBaseShape.cpp in Sources */,
 				F01092BB147FA462845C38C7 /* CreEPS.cpp in Sources */,
 				63B57AC5BF4EF088491E0317 /* ofxXmlSettings.cpp in Sources */,
+				049162051857B81F00A1ACD5 /* MSACoreGL.cpp in Sources */,
 				933A2227713C720CEFF80FD9 /* tinyxml.cpp in Sources */,
 				9D44DC88EF9E7991B4A09951 /* tinyxmlerror.cpp in Sources */,
 				5A4349E9754D6FA14C0F2A3A /* tinyxmlparser.cpp in Sources */,

@@ -5,9 +5,11 @@
 #include "Beta.h"
 #include "Tracker.h"
 #include "Meshplane.h"
+#include "ofxBullet.h"
 #include "ViewMapping.h"
-#include "MSACore.h"
-#include "MSAObjCPointer.h"
+
+#include "MSAPhysics3D.h"
+
 
 class testApp : public ofBaseApp{
 
@@ -34,6 +36,7 @@ class testApp : public ofBaseApp{
         Beta * beta;
         Tracker * tracker;
     
+
         enum Mode
             {
             ModeNormal,
@@ -46,23 +49,36 @@ class testApp : public ofBaseApp{
 
         ofParameter<int> intForSlider;
         ofParameter<int> intForSlider1;
-        ofParameter<int> intForSlider2;
         ofParameter<bool> boolForToogle;
         ofParameter<bool> boolForToogle1;
-        ofParameter<bool> boolForToogle2;
-        
+        ofParameter<bool> boolForButton1;
+        ofParameter<int> intForSlider2;
 
         ViewMapping mapping;
         Meshplane meshplane;
     
+        ofVec3f gravity;
         ofVec2f pressPos;
         float dragDist;
         bool isDrag = false;
         bool fullscreen = false;
         bool debugOn = false;
-        bool pathOn = false;
     
-        ofxMSAPhysics msaPhysics;
     
-
+    ofxBulletWorldRigid			world;
+	ofxBulletBox				ground;
+	ofxBulletSphere*			sphere;
+	ofxBulletBox*				box;
+	ofxBulletCone*				cone;
+	ofxBulletCapsule*			capsule;
+	ofxBulletCylinder*			cylinder;
+    
+    ofLight pointLight;
+    ofColor lightColor;
+    
+    
+    msa::physics::World3D		physics;
+ 
+    
+   
 };
