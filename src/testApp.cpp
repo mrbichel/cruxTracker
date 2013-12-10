@@ -24,42 +24,16 @@ void testApp::setup(){
     parameters.add(intForSlider1.set("Gravity", -9.8, -20, 20));
     parameters.add(boolForToogle.set("Fullscreen",false));
     parameters.add(boolForToogle1.set("Debug",false));
+    parameters.add(boolForToogle2.set("Draw path",false));
+    //Todo make fov
     parameters.add(intForSlider2.set("Fov", 60, 20, 120));
     gui.setup(parameters);
     gui.loadFromFile("settings.xml");
 
 	camera.setPosition(ofVec3f(0, -7.f, -10.f));
 	camera.lookAt(ofVec3f(0, 0, 0), ofVec3f(0, -1, 0));
-    
-	world.setup();
-	world.enableGrabbing();
-	world.enableDebugDraw();
-    
-	world.setCamera(&camera);
 	
-	sphere = new ofxBulletSphere();
-	sphere->create(world.world, ofVec3f(0, 0, 0), 0.1, .25);
-	sphere->add();
-	
-	box = new ofxBulletBox();
-	box->create(world.world, ofVec3f(7, 0, 0), .05, .5, .5, .5);
-	box->add();
-	
-	cone = new ofxBulletCone();
-	cone->create(world.world, ofVec3f(-1, -1, .2), .2, .4, 1.);
-	cone->add();
-	
-	capsule = new ofxBulletCapsule();
-	capsule->create(world.world, ofVec3f(1, -2, -.2), .4, .8, 1.2);
-	capsule->add();
-	
-	cylinder = new ofxBulletCylinder();
-	cylinder->create(world.world, ofVec3f(0, -2.4, 0), .8, .9, 1.8);
-	cylinder->add();
-    
-	ground.create( world.world, ofVec3f(0., 5.5, 0.), 0., 100.f, 1.f, 100.f );
-	ground.setProperties(.25, .95);
-	ground.add();
+
     
     
 }
@@ -69,6 +43,7 @@ void testApp::update(){
     
     tracker->threshold = intForSlider;
     debugOn = boolForToogle1;
+    pathOn = boolForToogle2;
     
     if (currentMode == ModeNormal) {
         if (boolForToogle == true){
@@ -81,7 +56,7 @@ void testApp::update(){
         
         meshplane.update();
         tracker->update();
-        world.update();
+        
     }
 }
 
@@ -98,29 +73,7 @@ void testApp::draw(){
         mapping.begin();
         
         meshplane.draw();
-        
-        camera.begin();
-        
-        //glEnable( GL_DEPTH_TEST );
-        
-        ofSetColor(225, 225, 225);
-        sphere->draw();
-        
-        ofSetColor(225, 225, 225);
-        box->draw();
-        
-        ofSetColor(225, 225, 225);
-        cylinder->draw();
-        
-        ofSetColor(225, 225, 225);
-        capsule->draw();
-        
-        ofSetColor(225, 225, 225);
-        cone->draw();
-        
-        camera.end();
-        
-        //glDisable( GL_DEPTH_TEST );
+
 
         beta->draw();
         
@@ -129,7 +82,7 @@ void testApp::draw(){
 
         if(debugOn) {
             tracker->debugDraw();
-            world.drawDebug();
+           
         }
         gui.draw();
         

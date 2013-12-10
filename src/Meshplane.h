@@ -21,10 +21,5 @@ public:
     void draw();
     
     ofPlanePrimitive plane;
-    ofLight pointLight;
-    ofColor lightColor;
-    ofVec3f center;
-    ofImage texture;
-    ofMaterial material;
-    vector<ofMeshFace> triangles;
+  
 };

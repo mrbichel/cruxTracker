@@ -99,14 +99,14 @@ public:
     void debugDraw() {
         ofSetColor(255);
         //colorImg.draw(20,20);
-        //grayImage.draw(360,20);
+        grayImage.draw(350,20);
         grayBg.draw(670,20);
         //grayDiff.draw(360,280);
         
         
         
         
-        // or, instead we can draw each blob individually from the blobs vector,
+        // we can draw each blob individually from the blobs vector,
         // this is how to get access to them:
         for (int i = 0; i < contourFinder.nBlobs; i++){
             contourFinder.blobs[i].draw(350,20);
