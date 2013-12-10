@@ -51,7 +51,8 @@ class testApp : public ofBaseApp{
         ofParameter<int> intForSlider1;
         ofParameter<bool> boolForToogle;
         ofParameter<bool> boolForToogle1;
-        ofParameter<bool> boolForButton1;
+        ofParameter<bool> boolForToogle2;
+       
         ofParameter<int> intForSlider2;
 
         ViewMapping mapping;
@@ -65,16 +66,6 @@ class testApp : public ofBaseApp{
         bool debugOn = false;
     
     
-    ofxBulletWorldRigid			world;
-	ofxBulletBox				ground;
-	ofxBulletSphere*			sphere;
-	ofxBulletBox*				box;
-	ofxBulletCone*				cone;
-	ofxBulletCapsule*			capsule;
-	ofxBulletCylinder*			cylinder;
-    
-    ofLight pointLight;
-    ofColor lightColor;
     
     
     msa::physics::World3D		physics;

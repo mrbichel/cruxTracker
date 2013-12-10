@@ -8,6 +8,8 @@ void testApp::setup(){
     beta = new Beta();
     tracker = new Tracker();
     
+    
+    
     beta->setup();
     tracker->setup();
     meshplane.setup();
@@ -41,9 +43,10 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
     
+    physics.update();
     tracker->threshold = intForSlider;
     debugOn = boolForToogle1;
-    pathOn = boolForToogle2;
+    //pathOn = boolForToogle2;
     
     if (currentMode == ModeNormal) {
         if (boolForToogle == true){
@@ -77,6 +80,9 @@ void testApp::draw(){
 
         beta->draw();
         
+        physics.draw();
+        
+    
         
         mapping.end();
 
