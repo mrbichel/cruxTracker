@@ -8,6 +8,9 @@
 #include "ofxBullet.h"
 #include "ViewMapping.h"
 
+#include "MSAPhysics3D.h"
+
+
 class testApp : public ofBaseApp{
 
 	public:
@@ -72,5 +75,10 @@ class testApp : public ofBaseApp{
     
     ofLight pointLight;
     ofColor lightColor;
+    
+    
+    msa::physics::World3D		physics;
+ 
+    
    
 };
